@@ -9,15 +9,9 @@ import java.util.Iterator;
 import java.util.stream.StreamSupport;
 
 public class CensusAnalyser {
-    public static void main(String[] args) {
-        System.out.println("Indian census analyser");
-    }
-   /* public static int loadCensusData(String filePathCSV) throws CensusAnalyserException {
+    public static int loadCensusData(String filePathCSV) throws CensusAnalyserException {
         try (Reader reader = Files.newBufferedReader(Paths.get(filePathCSV))) {
-            CsvToBean<CensusAnalyserData> csvToBean = new CsvToBeanBuilder<CensusAnalyserData>(reader)
-                    .withType(CensusAnalyserData.class)
-                    .withIgnoreLeadingWhiteSpace(true)
-                    .build();
+            CsvToBean<CensusAnalyserData> csvToBean = new CsvToBeanBuilder<CensusAnalyserData>(reader).withType(CensusAnalyserData.class).withIgnoreLeadingWhiteSpace(true).build();
             Iterator<CensusAnalyserData> CensusAnalyserDataIterator = csvToBean.iterator();
             Iterable<CensusAnalyserData> censusCSVIterable = () -> CensusAnalyserDataIterator;
             return (int) StreamSupport.stream(censusCSVIterable.spliterator(), false).count();
@@ -26,5 +20,5 @@ public class CensusAnalyser {
         } catch (RuntimeException e) {
             throw new CensusAnalyserException(e.getMessage(), CensusAnalyserException.ExceptionType.WRONG_FILE);
         }
-    }*/
+    }
 }

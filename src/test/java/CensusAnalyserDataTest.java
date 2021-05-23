@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 public class CensusAnalyserDataTest {
     private static final String CENSUS_CSV_FILE = "F:\\IndianStatesCensusAnalyserProblem\\src\\main\\resources\\IndiaStateCensusData.csv";
     private static final String CENSUS_CSV_INVALID_FILE = "F:\\IndianStatesCensusAnalyserProblem\\src\\main\\resources\\IndiaStateCensus.csv";
+    private static final String CENSUS_CSV_VALID_FILE = "F:\\IndianStatesCensusAnalyserProblem\\src\\main\\resources\\IndiaStateCensus.txt";
     @Test
     public void givenIndianCensusCSVFileReturnsCorrectRecords() {
         try {
@@ -24,6 +25,16 @@ public class CensusAnalyserDataTest {
             censusAnalyser.loadCensusData(CENSUS_CSV_INVALID_FILE);
         } catch (CensusAnalyserException e) {
             Assertions.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
+        }
+    }
+
+    @Test
+    public void givenIndiaCensusData_WhenTypeIncorrect_ShouldThrowCustomException() {
+        try {
+            CensusAnalyser.loadCensusData(CENSUS_CSV_VALID_FILE);
+        } catch (CensusAnalyserException e) {
+            System.out.println(e.type);
+            Assertions.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
         }
     }
 }
